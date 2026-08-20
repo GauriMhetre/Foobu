@@ -105,3 +105,10 @@ Open the printed local URL (typically `http://localhost:5173`).
 - All outbound requests (to the LLM API) use HTTPS only.
 - User-supplied input (ingredients, route params) is validated/sanitized server-side before use in prompts or queries.
 - Errors are handled centrally via middleware and never leak internal stack traces or secrets to the client — only a safe, generic message plus the correct HTTP status code.
+
+## Tech Debt
+- **Testing**: Missing comprehensive unit and integration tests across the frontend and backend.
+- **Authentication**: Currently lacks a robust user authentication and authorization system (OAuth, JWT).
+- **Error Handling**: Need more granular error boundaries on the React frontend to prevent full app crashes on unexpected API responses.
+- **Performance**: LLM API calls can be slow; consider implementing a caching layer (e.g., Redis) or returning streaming responses to the frontend.
+- **Scalability**: Database indexing on frequently queried fields (e.g., recipe categories) should be reviewed and optimized for larger datasets.
